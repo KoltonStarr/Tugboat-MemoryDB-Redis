@@ -1,0 +1,17 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: A basic template for creating a MemoryDB ACL. 
+
+Parameters:
+  ACLName:
+    Description: The name of the ACL
+    Type: String
+  UserNames:
+    Description: List of users to be associated with the ACL.
+    Type: CommaDelimitedList
+
+Resources: 
+  acl:
+     Type: AWS::MemoryDB::ACL
+     Properties:
+      ACLName: !Ref ACLName
+      UserNames: !Ref UserNames
