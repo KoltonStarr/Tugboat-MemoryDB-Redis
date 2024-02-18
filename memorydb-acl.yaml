@@ -3,11 +3,11 @@ Description: A basic template for creating a MemoryDB ACL.
 
 Parameters:
   ACLName:
-    Description: The name of the ACL
+    Description: The name of the ACL.
     Type: String
   UserNames:
     Description: List of users to be associated with the ACL.
-    Type: CommaDelimitedList
+    Type: List<String>
 
 Resources: 
   acl:
@@ -15,3 +15,9 @@ Resources:
      Properties:
       ACLName: !Ref ACLName
       UserNames: !Ref UserNames
+
+# TODO: Make this dynamic.
+# aws cloudformation create-stack \                                                                                additions ✱
+#   --stack-name MyMemoryDBACLStack \
+#   --template-body file://memorydb-acl.yaml \
+#   --parameters ParameterKey=ACLName,ParameterValue=adminacl ParameterKey=UserNames,ParameterValue='"admin-koltonstarr,admin-jackhermansson"'

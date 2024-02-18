@@ -1,16 +1,27 @@
 # Tugboat-MemoryDB-Redis
-All things to do with MemoryDB and Redis!
+All things to do with MemoryDB and Redis! This project is designed to help you quickly get up and running with MemoryDB for Redis.
 
-## Overview 
-Installing and using Redis locally in a Docker container seemed the easiest thing to do. 
+This project really has 2 parts to it:
+- Local testing and tom-foolery with standalone Redis. 
+- Configuring and deploying a MemoryDB with Redis cluser in your AWS account. 
+
+## Pre-requisites
+- You must have the Docker engine installed and running on the host machine you are using(local or remote). 
+- You must have an AWS account. 
+- You must have your AWS CLI configured on your host machine with an IAM role that has the appropriate access to MemoryDB.
+
+## Project Overview & File Tour
+Installing and using Redis locally in a Docker container is the easiest way to get started. 
 
 This project uses the [Redis Stack](https://redis.io/docs/install/install-stack/) to fully utilize the Redis Insights UI that comes pre-installed 
-along with several other useful features of Redis. 
+along with several other useful features of Redis.
 
 The ```/local-data``` directory acts as a mounted volume for the redis server running in a container. It essentially acts as a dummy data folder 
 for testing and experimentation.
 
-The ```/ex-binary-data-value``` directory is the golang source code (which uses the golang Redis SDK) for the executuable: ```set-file-data```. It is a simple program that can show how you can use the contents of a file as a value to a redis key. You can store straight binary or some encoded representation of it like base64. 
+The ```set-file-data``` is an executable. It is a simple program that uses the Redis SDK to connect to the Redis server to show how you can store the contents of a file as a value to a redis key. You can store straight binary or some encoded representation of it like base64. 
+
+If you are interested in ivestigating the source code of the aformentioned executable then take a peek inside the ```/_set-file-data-src``` directory.
 
 ## Getting Started
 To run the Redis Stack use the **run-redis.sh** script. If you have no already done so, run ```chmod +x run-redis.sh``` to 
