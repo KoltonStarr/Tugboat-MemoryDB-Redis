@@ -11,11 +11,6 @@ This project really has 2 parts to it:
 - You must have your AWS CLI configured on your host machine with an IAM role that has the appropriate access to MemoryDB.
 
 ## Project Overview & File Tour
-Installing and using Redis locally in a Docker container is the easiest way to get started. 
-
-This project uses the [Redis Stack](https://redis.io/docs/install/install-stack/) to fully utilize the Redis Insights UI that comes pre-installed 
-along with several other useful features of Redis.
-
 The ```/local-data``` directory acts as a mounted volume for the redis server running in a container. It essentially acts as a dummy data folder 
 for testing and experimentation.
 
@@ -23,17 +18,22 @@ The ```set-file-data``` is an executable. It is a simple program that uses the R
 
 If you are interested in ivestigating the source code of the aformentioned executable then take a peek inside the ```/_set-file-data-src``` directory.
 
-## Getting Started
-To run the Redis Stack use the **run-redis.sh** script. If you have no already done so, run ```chmod +x run-redis.sh``` to 
+## Getting Started Locally with Redis
+Installing and using Redis locally in a Docker container is the easiest way to get started. 
+
+This project uses the [Redis Stack](https://redis.io/docs/install/install-stack/) to fully utilize the Redis Insights UI that comes pre-installed 
+along with several other useful features of Redis.
+
+To run the Redis Stack use the **run-redis.sh** script. If you have not already done so, run ```chmod +x run-redis.sh``` to 
 give executable permissions to the script. You must also provide a container name for the script. Here is an example:
 
-```./run-redis.sh redis_server```
+```./run-redis.sh my_redis_server```
 
 To enter into a Redis CLI session use the **./redis-cli** script and provide the name of the container that you provided in the previous step. Here is an example: 
 
-```./redis-cli.sh redis_server```
+```./redis-cli.sh my_redis_server```
 
-## Basic Commands
+## Basic Redis Commands
 Use SET and GET to work with basic string types. This includes binary data. 
 
 - ```SET name Kolton```

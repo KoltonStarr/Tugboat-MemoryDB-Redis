@@ -1,0 +1,32 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: A simple VPC template with a smaller CIDR block.
+
+Resources: 
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 192.168.0.0/18
+
+  PrivateSubnet1:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: 
+        Ref: VPC
+      CidrBlock: 192.168.0.0/20
+      AvailabilityZone: us-east-1b
+
+  PrivateSubnet2:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: 
+        Ref: VPC
+      CidrBlock: 192.168.16.0/20
+      AvailabilityZone: us-east-1c
+
+  PublicSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: 
+        Ref: VPC
+      CidrBlock: 192.168.32.0/20
+      AvailabilityZone: us-east-1a
